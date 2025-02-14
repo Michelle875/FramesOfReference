@@ -1,0 +1,208 @@
+/* General styles */
+body {
+  font-family: 'Arial', sans-serif;
+  margin: 0;
+  padding: 0;
+  background: radial-gradient(circle, rgba(39, 53, 102, 0.8) 30%, rgba(20, 30, 60, 0.9) 100%);
+  color: #FFF;
+  
+}
+
+
+
+
+
+/* Header Styling */
+.header {
+  position: relative;
+  background-image: url('./images/linedheader.png');
+  background-size: cover;
+  background-position: center;
+  height: 500px;
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  box-shadow: 0px 8px 20px rgba(0, 0, 0, 0.7); /* Stronger shadow for depth */
+  flex-direction: column;
+}
+
+.title {
+  font-size: 80px;
+  font-weight: bold;
+  text-shadow: 
+    3px 3px 10px rgba(87, 56, 112, 0.8), 
+    -3px -3px 10px rgba(182, 210, 242, 0.8); /* Stronger shadow for more contrast */
+  font-family: 'Times New Roman', sans-serif;
+  transform: skew(-5deg);
+  color: #000000; /* Bright white for better readability */
+}
+
+.subtitle {
+  font-size: 40px;
+  font-weight: bold;
+  color: #000000;
+  text-shadow: 
+    3px 3px 10px rgba(87, 56, 112, 0.8), 
+    -3px -3px 10px rgba(182, 210, 242, 0.8);  /* Enhanced shadow for stronger contrast */
+  font-family: 'Times New Roman', sans-serif;
+  transform: skew(-5deg);
+}
+
+/* Navigation Bar */
+.nav {
+  position: fixed;
+  top: 0;
+  background: rgba(183, 213, 244, 0.5); /* Fully opaque for solid background */
+  z-index: 1000;
+  display: flex;
+  justify-content: right;
+  padding-right: 20px;
+  box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.5); /* Deeper shadow for more emphasis */
+}
+
+.nav ul {
+  list-style: none;
+  display: flex;
+  justify-content: center;
+  gap: 25px;
+}
+
+.nav ul li a {
+  text-decoration: none;
+  color: #040643; /* Brighter red */
+  font-weight: bold;
+  font-size: 24px;
+  transition: color 0.3s ease-in-out, text-shadow 0.3s ease-in-out;
+  font-family:fantasy;
+}
+
+.nav ul li a:hover {
+  color: #fc2727; /* Brighter red for hover */
+  text-shadow: 2px 2px 10px rgba(255, 80, 80, 0.8); /* Increased shadow contrast */
+}
+
+/* Main Content */
+.content-section {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 60px;
+  /*background: linear-gradient(to left, #1C1C1C, #004B63);  Darker gradient for stronger contrast */
+}
+
+.content-container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  max-width: 1200px;
+  width: 95%;
+  padding: 30px;
+  border-radius: 12px;
+}
+
+/* Text Styling */
+.text-wrapper {
+  flex: 1;
+  padding-right: 25px;
+}
+
+.description {
+  font-family: cursive;
+  font-size: 50px;
+  font-weight: bold;
+  color: #a6e5ed;
+  text-shadow: 2px 2px 10px rgba(16, 55, 60, 0.7);
+
+
+
+}
+
+.descriptionText {
+  font-size: 20px;
+  line-height: 1.7;
+  color: #FFF;
+}
+
+/* Adjusting Image Placement */
+.homeImage {
+  text-align: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 12px;
+  box-shadow: 0px 8px 20px rgba(0, 0, 0, 0.7); /* Stronger shadow around image */
+  background: linear-gradient(to left, #1C1C1C, #004B63); /* Darker gradient */
+  height: 500px;
+  width: 500px;
+  overflow: hidden;
+}
+
+/* Make images fit better */
+.image-container img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+  border-radius: 12px;
+  box-shadow: 0px 8px 20px rgba(0, 0, 0, 0.7); /* Strong shadow for images */
+}
+
+/* Carousel Styling */
+.carousel-section {
+  width: 85%;
+  margin: 60px auto;
+  padding: 20px;
+}
+
+.carousel-container {
+  position: relative;
+  width: 90%;
+  margin: 0 auto;
+  overflow: hidden;
+  background: linear-gradient(to left, #1C1C1C, #004B63); /* Darker gradient */
+  border-radius: 25px;
+}
+
+.carousel-title {
+  font-family: cursive;
+  font-size: 40px;
+  font-weight: bold;
+  margin-bottom: 15px;
+  color: #a6e5ed;
+  text-shadow: 2px 2px 10px rgba(16, 55, 60, 0.7);
+}
+
+.carousel-image {
+  width: 100%;
+  height: auto;
+  border-radius: 15px;
+  box-shadow: 0px 8px 20px rgba(0, 0, 0, 0.7); /* Deep shadow for carousel images */
+}
+
+/* Slick carousel arrows */
+.slick-prev, .slick-next {
+  background-color: rgba(0, 255, 255, 0.8);
+  border-radius: 50%;
+  color: white;
+  font-size: 22px;
+}
+
+.slick-dots li button:before {
+  color: #FF5050 !important;
+}
+
+/* Footer */
+.footer {
+  background-color: #2A2A2A; /* Slightly darker footer */
+  color: white;
+  text-align: center;
+  padding: 25px;
+}
+
+.homeFooterText {
+  font-size: 18px;
+  line-height: 1.6;
+  max-width: 900px;
+  margin: 10px auto;
+}
