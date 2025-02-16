@@ -54,7 +54,7 @@ function App() {
       <section className="content-section">
         <div className="content-container">
           <div className="text-wrapper">
-            <h2 className="description">Description</h2>
+          <h2 className="description">Description</h2>
             <p className="descriptionText">
               Art is known to mirror societal transformation. 
               It captures changes in culture, politics, and religion. 
