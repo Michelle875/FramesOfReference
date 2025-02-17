@@ -6,6 +6,7 @@ import spain from './images/spainArt.jpeg';
 import russia from './images/russiaArt.jpeg';
 import Slider from "react-slick";
 import ImageCarousel from "./ImageCarousel";
+import ParticlesBackground from "./Components/particlesbg";
 
 
 function App() {
@@ -29,6 +30,7 @@ function App() {
 
   return (
     <div>
+      <ParticlesBackground />
       {/* Header Section */}
       <header className="header">
         <nav className="nav">
