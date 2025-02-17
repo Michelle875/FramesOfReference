@@ -6,7 +6,7 @@ import spain from './images/spainArt.jpeg';
 import russia from './images/russiaArt.jpeg';
 import Slider from "react-slick";
 import ImageCarousel from "./ImageCarousel";
-
+import { useState, useEffect } from 'react';
 
 function App() {
   const settings = {
@@ -19,16 +19,92 @@ function App() {
     autoplaySpeed: 3000,
     swipeToSlide: true, // Enables swiping
     touchMove: true    // Ensures touchpad/touchscreen scrolling
-    
   };
-  
 
-  
-  
+  const [overlayActive, setOverlayActive] = useState(true);  // State for overlay visibility
+  const [particles, setParticles] = useState([]);
+  const [particlesActive, setParticlesActive] = useState(true);  // Flag to control particles activity
 
+  // Function to generate particles across the screen
+  const generateParticles = () => {
+    const numParticles = 500;
+    const newParticles = [];
+    for (let i = 0; i < numParticles; i++) {
+      newParticles.push({
+        x: Math.random() * window.innerWidth,
+        y: Math.random() * window.innerHeight,
+        size: Math.random() * 5 + 10,
+        opacity: Math.random() * 0.5 + 0.5,
+      });
+    }
+    setParticles(newParticles);
+  };
+
+  // Function to update particle positions based on cursor movement
+  const handleCursorInteraction = (e) => {
+    if (!particlesActive) return; // If particles are not active, stop updating positions
+    const cursorX = e.clientX;
+    const cursorY = e.clientY;
+
+    setParticles(prevParticles => {
+      return prevParticles.map(particle => {
+        const distance = Math.sqrt(
+          Math.pow(cursorX - particle.x, 2) + Math.pow(cursorY - particle.y, 2)
+        );
+        if (distance < 100) {
+          const angle = Math.atan2(cursorY - particle.y, cursorX - particle.x);
+          return {
+            ...particle,
+            x: particle.x - Math.cos(angle) * 5,
+            y: particle.y - Math.sin(angle) * 5,
+          };
+        }
+        return particle;
+      });
+    });
+  };
+
+  useEffect(() => {
+    // Generate particles when the component mounts
+    generateParticles();
+
+    // Set a timeout to stop particles after 10 seconds
+    const timer = setTimeout(() => {
+      setParticlesActive(false);  // Disable particle movement after 10 seconds
+    }, 10000); // 10000 ms = 10 seconds
+
+    // Add event listener for cursor interaction
+    window.addEventListener('mousemove', handleCursorInteraction);
+
+    // Cleanup event listener and timer on component unmount
+    return () => {
+      window.removeEventListener('mousemove', handleCursorInteraction);
+      clearTimeout(timer);  // Clear the timeout when the component unmounts
+    };
+  }, []);
 
   return (
     <div>
+      <div className="particle-overlay">
+        {particles.map((particle, index) => (
+          <div
+            key={index}
+            className="particle"
+            style={{
+              left: `${particle.x}px`,
+              top: `${particle.y}px`,
+              width: `${particle.size}px`,
+              height: `${particle.size}px`,
+              opacity: `${particle.opacity}`,
+              position: 'absolute',
+              borderRadius: '50%',
+              backgroundColor: 'rgba(255, 255, 255, 0.8)',
+            }}
+          />
+        ))}
+      </div>
+      {overlayActive && <div className="particle-overlay"></div>}
+
       {/* Header Section */}
       <header className="header">
         <nav className="nav">
@@ -44,17 +120,13 @@ function App() {
         </nav>
         <h1 className="title">Frames of Reference</h1>
         <subtitle className="subtitle">By Michelle Shlivko</subtitle>
-
-
       </header>
-
-    
 
       {/* Main Content */}
       <section className="content-section">
         <div className="content-container">
           <div className="text-wrapper">
-          <h2 className="description">Description</h2>
+            <h2 className="description">Description</h2>
             <p className="descriptionText">
               Art is known to mirror societal transformation. 
               It captures changes in culture, politics, and religion. 
@@ -72,8 +144,7 @@ function App() {
         </div>
       </section>
 
-        {/* Image Carousel Section */}
-
+      {/* Image Carousel Section */}
       <section className="carousel-section">
         <h2 className="carousel-title">Explore Art from Different Regions</h2>
         <ImageCarousel settings={settings} />
