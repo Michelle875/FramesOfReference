@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useRef, useEffect } from "react";
 import './App.css';
 import DalleImage from './Pages/DALLE_Art.webp';
 import oceania from './images/oceania.jpeg';
@@ -7,6 +7,8 @@ import russia from './images/russiaArt.jpeg';
 import Slider from "react-slick";
 import ImageCarousel from "./ImageCarousel";
 import ParticlesBackground from "./Components/particlesbg";
+import FloatingCard from './Components/card';  // Import the Card component
+
 
 
 function App() {
@@ -22,6 +24,14 @@ function App() {
     touchMove: true    // Ensures touchpad/touchscreen scrolling
     
   };
+
+  const contentRef = useRef(null);
+
+  const scrollToContent = () => {
+    if (contentRef.current) {
+      contentRef.current.scrollIntoView({ behavior: "smooth" });
+    }
+  };
   
 
   
@@ -30,9 +40,8 @@ function App() {
 
   return (
     <div>
-      <ParticlesBackground />
       {/* Header Section */}
-      <header className="header">
+      <header className="header" ref={contentRef}>
         <nav className="nav">
           <ul>
             <li><a href="#home">Home</a></li>
@@ -49,7 +58,6 @@ function App() {
 
 
       </header>
-
     
 
       {/* Main Content */}
@@ -73,6 +81,32 @@ function App() {
           <img className="homeImage" src={DalleImage} alt="Art Image" />
         </div>
       </section>
+
+
+      {/* Floating Cards Section */}
+      <section className="cards-section">
+        <h2 className="cards-title fade-in">Explore Art from Different Regions</h2>
+        <div className="cards-container">
+          <FloatingCard
+            title="Spain Art"
+            image={require('./images/spainArt.jpeg')}
+            description="Explore the rich history of Spain's artistic evolution."
+          />
+          <FloatingCard
+            title="Oceania Art"
+            image={require('./images/oceania.jpeg')}
+            description="Discover the indigenous art of Oceania, rich in cultural symbolism."
+          />
+          <FloatingCard
+            title="Russia Art"
+            image={require('./images/russiaArt.jpeg')}
+            description="Dive into the visual culture of Russia, from folk art to modern masterpieces."
+          />
+        </div>
+      </section>
+
+
+      
 
         {/* Image Carousel Section */}
 
