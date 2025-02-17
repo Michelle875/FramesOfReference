@@ -182,7 +182,8 @@ const ParticlesBackground = () => {
             color: "white",
             fontSize: "100px",
             fontFamily: "cursive",
-            animation: "fadeIn 2s ease-out"
+            animation: "fadeIn 2s ease-out",
+
           }}
         >
           Welcome to Frames of Reference

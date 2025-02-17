@@ -10,5 +10,6 @@
     width: 100vh;
     height: 100vh;
     z-index: -100;
+    background: radial-gradient(circle, rgba(246, 210, 102, 0.572) 50%, rgba(249, 153, 0, 0.9) 100%);
     
 }
